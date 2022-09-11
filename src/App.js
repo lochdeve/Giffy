@@ -1,18 +1,20 @@
 import React, {useState,useEffect} from 'react';
 import './App.css';
 
-const GIFS =['https://media4.giphy.com/media/ssYuHGAAz8FMrFF0JN/giphy.gif?cid=ecf05e478e5ldzp4wbxap37k6x65i00thw4u4qomxqp5igrv&rid=giphy.gif&ct=g','https://media0.giphy.com/media/l41JU9pUyosHzWyuQ/giphy.gif?cid=ecf05e478e5ldzp4wbxap37k6x65i00thw4u4qomxqp5igrv&rid=giphy.gif&ct=g'];
-
-const DIFFERENTS_GIFS = [
-  'https://media4.giphy.com/media/jUwpNzg9IcyrK/giphy.gif?cid=ecf05e470nn5rs4qre5nwkvanzf2id1hoqt2xvvgytlnynas&rid=giphy.gif&ct=g','https://media1.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif?cid=ecf05e470nn5rs4qre5nwkvanzf2id1hoqt2xvvgytlnynas&rid=giphy.gif&ct=g'
-]
+const API_URL = 'https://api.giphy.com/v1/gifs/search?api_key=pfRUiRDZMN313y3EeN5yxjLpTUhQRYe4&q=simpsons&limit=10&offset=0&rating=g&lang=en';
 
 const App = () => {
-  const [gifs, setGifs] = useState(GIFS);
+  const [gifs, setGifs] = useState([]);
 
   useEffect(() => {
-    console.log('Se ejecuto');
-    setGifs(DIFFERENTS_GIFS);
+    //    setGifs(DIFFERENTS_GIFS);
+    fetch(API_URL)
+    .then(res => res.json())
+    .then(response => {
+      const {data} = response;
+      const gifs = data.map(image => image.images.downsized_medium.url);
+      setGifs(gifs)
+    })  
   },[]);
 
   return (
