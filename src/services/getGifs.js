@@ -1,8 +1,7 @@
 const API_KEY ='pfRUiRDZMN313y3EeN5yxjLpTUhQRYe4';
 
 const getGifs = ({keyword = 'simpsons'} = {}) => {
-  const API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=50&offset=0&rating=g&lang=en`;
-
+  const API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=10&offset=0&rating=g&lang=en`;
   return fetch(API_URL)
   .then(res => res.json())
   .then(response => {

@@ -10,17 +10,17 @@ const ListOfGifs = ({params}) => {
   const {keyword} = params;
   useEffect(() => {
     setGifs(actualGif => (
-        {results: actualGif.results, loading: true}
+        { loading: true, results: actualGif.results}
       )
     );
     getGifs({keyword}).then(gifs => {setGifs(gifs);
-      setGifs({results: gifs.results, loading: false})
+      setGifs({ loading: false, results: gifs})
     })
   },[keyword]);
 
   if (gifs.loading) return <i>cargando @</i>
 
-  return (gifs.results.map(({id,title, url}) => 
+  return (gifs.results.map(({id, title, url}) => 
         <Gif 
           key={id} 
           title={title} 

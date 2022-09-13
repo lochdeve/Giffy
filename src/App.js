@@ -1,10 +1,9 @@
-import React, {  useState } from 'react';
+import React from 'react';
 import './App.css';
 import ListOfGifs from './components/ListOfGifs';
 import {Link, Route} from 'wouter'
 
 const App = () => {
-  const [keyword, setKeyword] = useState('panda');
 
   return (
     <div className="App">
