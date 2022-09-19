@@ -8,12 +8,11 @@ const POPULAR_GIFS = ['Pandas','RickandMorty']
 const Home = () => {
   const [keyword,setKeyword] = useState('');
   const [path, goToLocation] = useLocation();
-  const {loading, gifs} = useGifs({keyword: 'Indiana'});
+  const {loading, gifs} = useGifs();
 
   const handleSubmit = event => {
     event.preventDefault();
     goToLocation(`/search/${keyword}`)
-    console.log(keyword);
   }
 
   const handleChange = event => {

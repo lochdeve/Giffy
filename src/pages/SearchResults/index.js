@@ -4,7 +4,7 @@ import useGifs from "../../hooks/useGifs";
 
 const SearchResults = ({params}) => {
   const {keyword} = params;
-  const {loading, gifs} = useGifs(keyword);
+  const {loading, gifs} = useGifs({keyword});
 
   if (loading) return <i>cargando @</i>
 
