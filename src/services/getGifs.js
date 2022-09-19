@@ -15,5 +15,4 @@ const getGifs = ({keyword = 'simpsons'} = {}) => {
   })
 }
   
-
 export default getGifs;

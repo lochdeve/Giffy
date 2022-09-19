@@ -1,25 +1,12 @@
-import React, {useEffect,useState} from "react";
+import React from "react";
 import ListOfGifs from "../../components/ListOfList";
-import getGifs from "../../services/getGifs";
+import useGifs from "../../hooks/useGifs";
 
 const SearchResults = ({params}) => {
   const {keyword} = params;
-  const [gifs, setGifs] = useState({
-    loading: false,
-    results: []
-  });
+  const {loading, gifs} = useGifs(keyword);
 
-  useEffect(() => {
-    setGifs(actualGif => (
-        { loading: true, results: actualGif.results}
-      )
-    );
-    getGifs({keyword}).then(gifs => {setGifs(gifs);
-      setGifs({ loading: false, results: gifs})
-    })
-  },[keyword]);
-
-  if (gifs.loading) return <i>cargando @</i>
+  if (loading) return <i>cargando @</i>
 
   return (
     <>
