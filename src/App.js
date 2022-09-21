@@ -14,14 +14,14 @@ const App = () => {
       </div>
       <section className='App-content'>
         <Route 
-        component={SearchResults} 
-        path='/search/:keyword'/>
+          component={SearchResults} 
+          path='/search/:keyword'/>
         <Route 
-        component={Home} 
-        path='/'/>
+          component={Home} 
+          path='/'/>
         <Route 
-        component={DetailView} 
-        path='/'/>
+          component={DetailView} 
+          path='/'/>
       </section>
     </div>
   );

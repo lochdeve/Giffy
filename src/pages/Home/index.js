@@ -24,6 +24,7 @@ const Home = () => {
       <form onSubmit={handleSubmit}>
         <input onChange={handleChange} type='text' value={keyword} placeholder='Search a gif here'/>
       </form>
+      <h3>Last Search</h3>
       <ListOfGifs gifs={gifs}/>
       <h3>Most popular gifs</h3>
       <ul>
