@@ -1,22 +1,14 @@
 import React from "react";
 import Gif from "../../components/Gif";
-import useGlobalGifs from "../../hooks/useGlobalGifs";
+import useGifs from "../../hooks/useGifs";
 
-interface GifType {
-  id:string
-  title:string
-  url:string
-}
-
-interface Params {
-  id: string
-}
-
-const DetailView = ({id}:any) => {
-  const gifs = useGlobalGifs();
-  const gif = gifs?.gifs.find(gif => 
+const DetailView = ({params}:any) => {
+  const { id} = params;
+  const gifs = useGifs();
+  const gif = gifs?.contextGifs?.gifs.find(gif => 
     gif.id === id
   )
+  console.log(id)
     if (gif===undefined) {
       return <div>There was an error</div>
     }else{
