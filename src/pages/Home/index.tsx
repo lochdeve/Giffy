@@ -27,7 +27,7 @@ const Home = () => {
         </button>
       </form>
       <h3>Last Search</h3>
-      <ListOfGifs gifs={gifs?.contextGifs?.gifs.splice(3)}/>
+      <ListOfGifs gifs={gifs?.contextGifs?.gifs.splice(0,3)}/>
       <h3>Most popular gifs</h3>
       <ul>
         {
