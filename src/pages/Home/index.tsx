@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import {Link, useLocation}  from 'wouter'
+import { Link }  from 'wouter'
 import useGifs from "../../hooks/useGifs";
 import ListOfGifs from "../../components/ListOfList";
+import './style.css'
 
 const POPULAR_GIFS = ['Pandas','RickandMorty']
 
 const Home = () => {
   const [keyword,setKeyword] = useState('');
-  const [ goToLocation ] = useLocation();
-  const { gifs } = useGifs();
+  const gifs = useGifs();
 
-  const handleSubmit = event => {
+  const handleSubmit = (event:React.SyntheticEvent) => {
     event.preventDefault();
-    goToLocation(`/search/${keyword}`)
   }
 
-  const handleChange = event => {
+  const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(event.target.value);
   }
 
@@ -23,9 +22,12 @@ const Home = () => {
     <>
       <form onSubmit={handleSubmit}>
         <input onChange={handleChange} type='text' value={keyword} placeholder='Search a gif here'/>
+        <button>
+          <Link style={{fontSize:'15px'}} to={`/search/${keyword}`}>Search</Link> 
+        </button>
       </form>
       <h3>Last Search</h3>
-      <ListOfGifs gifs={gifs}/>
+      <ListOfGifs gifs={gifs?.contextGifs?.gifs}/>
       <h3>Most popular gifs</h3>
       <ul>
         {

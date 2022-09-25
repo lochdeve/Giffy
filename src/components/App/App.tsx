@@ -1,25 +1,25 @@
 import React from 'react';
 import './App.css';
-import { Route } from 'wouter'
-import logo from './Assets/logo.png'
-import Home from './pages/Home';
-import DetailView from './pages/detail';
-import SearchResults from './pages/SearchResults';
-import Context from './context/staticContext';
-import { GifContextProvider } from './context/gifContext';
+import { Link, Route } from 'wouter'
+import Logo from '../../Assets/logo.png'
+import Home from '../../pages/Home';
+import DetailView from '../../pages/detail';
+import SearchResults from '../../pages/SearchResults';
+import Context from '../../context/staticContext';
+import { GifsContextProvider } from '../../context/gifContext';
 
 const App = () => {
   return (
     <Context.Provider value={{
       name: 'carlos',
-      subscribete: true
     }}>
       <div className="App">
-        <div>
-          <img src={logo} alt='Logo'></img>
-        </div>
+        <Link to='/'>
+          <img src={Logo} alt='Logo'></img>
+        </Link>
+
         <section className='App-content'>
-          <GifContextProvider>
+          <GifsContextProvider>
             <Route 
               component={SearchResults} 
               path='/search/:keyword'/>
@@ -29,7 +29,7 @@ const App = () => {
             <Route 
               component={DetailView} 
               path='/gif/:id'/>
-          </GifContextProvider>
+          </GifsContextProvider>
         </section>
       </div>
     </Context.Provider>

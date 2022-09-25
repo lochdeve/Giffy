@@ -2,15 +2,13 @@ import React from "react";
 import ListOfGifs from "../../components/ListOfList";
 import useGifs from "../../hooks/useGifs";
 
-const SearchResults = ({params}) => {
+const SearchResults = ({params}:any) => {
   const {keyword} = params;
-  const {loading, gifs} = useGifs({keyword});
-
-  if (loading) return <i>cargando @</i>
-
+  const {loading, contextGifs} = useGifs({keyword});
+  
   return (
     <>
-      <ListOfGifs gifs={gifs}/>
+      <ListOfGifs gifs={contextGifs?.gifs}/>
     </>
   )
 }

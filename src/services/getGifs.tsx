@@ -6,7 +6,7 @@ const getGifs = ({keyword = 'simpsons'} = {}) => {
   .then(res => res.json())
   .then(response => {
     const {data = []} = response;
-    const gifs = data.map(image => {
+    const gifs = data.map((image:any) => {
       const {images, id, title} = image;
       const {url} = images.downsized_medium;
       return {title, id, url}

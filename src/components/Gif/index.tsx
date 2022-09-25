@@ -1,7 +1,13 @@
 import React from "react";
 import './index.css'
 
-const Gif = ({title, id, url}) => {
+interface GifObject {
+  title: string,
+  id: string,
+  url: string
+}
+
+const Gif = ({title, id, url}:GifObject) => {
   return (
     <a href={`/gif/${id}`} className="Gif">
       <h4>{title}</h4>
