@@ -6,6 +6,10 @@ const SearchResults = ({params}:any) => {
   const {keyword} = params;
   const {loading, contextGifs} = useGifs({keyword});
   
+  if (loading) {
+    return <h1>Loading</h1>
+  }
+
   return (
     <>
       <ListOfGifs gifs={contextGifs?.gifs}/>
