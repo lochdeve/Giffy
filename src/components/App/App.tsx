@@ -25,7 +25,7 @@ const App = () => {
               path='/search/:keyword'/>
             <Route 
               component={Home} 
-              path='/'/>
+              path='/Giffy'/>
             <Route 
               component={DetailView} 
               path='/gif/:id'/>
